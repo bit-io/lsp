@@ -46,7 +46,7 @@ fn json_kind_count_items_keys() is
     test::assert_eq(lsp_json::kind("null"), "null")
     test::assert_eq(lsp_json::count(lsp_json::get(sample(), "params.items")), 2)
     test::assert_eq(lsp_json::count(sample()), 3)
-    test::assert_eq(iter_join(lsp_json::keys(sample()), ","), "id,method,params")
+    test::assert_eq(lsp_json::join(lsp_json::keys(sample()), ","), "id,method,params")
     test::assert_eq(lsp_json::item("[10,20,30]", 2), "30")
 end
 
