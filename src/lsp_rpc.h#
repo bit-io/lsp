@@ -66,7 +66,7 @@ pub fn read_message() -> string is
         parts = array_push(parts, chunk)
         got += want
     end
-    return iter_join(parts, "")
+    return lsp_json::join(parts, "")
 end
 
 ;; Wysyla surowy JSON jako wiadomosc LSP.
