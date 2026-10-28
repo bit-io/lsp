@@ -7,7 +7,7 @@ pub fn split_lines(text: string) -> [string] is
 end
 
 pub fn join_lines(lines: [string]) -> string is
-    return iter_join(lines, "\n")
+    return lsp_json::join(lines, "\n")
 end
 
 ;; Ile bajtow UTF-8 zajmuje znak o danym bajcie wiodacym.
@@ -247,7 +247,7 @@ fn decode_utf8_run(bs: [int]) -> string is
             j += l
         end
     end
-    return iter_join(out, "")
+    return lsp_json::join(out, "")
 end
 
 pub fn pct_decode(s: string) -> string is
@@ -272,7 +272,7 @@ pub fn pct_decode(s: string) -> string is
         end
     end
     if run < n is out = array_push(out, string_slice(s, run, n)) end
-    return iter_join(out, "")
+    return lsp_json::join(out, "")
 end
 
 fn is_unreserved(c: int) -> bool is
@@ -298,7 +298,7 @@ pub fn pct_encode(s: string) -> string is
         i += 1
     end
     if run < n is out = array_push(out, string_slice(s, run, n)) end
-    return iter_join(out, "")
+    return lsp_json::join(out, "")
 end
 
 ;; file:///home/u/a%20b.h# -> /home/u/a b.h#   (file:///C:/x -> C:/x). Inne
